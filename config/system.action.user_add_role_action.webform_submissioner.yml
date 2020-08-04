@@ -1,0 +1,14 @@
+uuid: 440af64b-b696-4354-8b65-7a14f89ad38d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.webform_submissioner
+  module:
+    - user
+id: user_add_role_action.webform_submissioner
+label: 'Add the Webform submissioner role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: webform_submissioner

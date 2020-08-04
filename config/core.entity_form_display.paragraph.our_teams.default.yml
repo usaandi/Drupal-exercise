@@ -1,0 +1,78 @@
+uuid: 6e5f590f-3e33-4d2e-a673-db201510cf97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.our_teams.field_description
+    - field.field.paragraph.our_teams.field_email
+    - field.field.paragraph.our_teams.field_image
+    - field.field.paragraph.our_teams.field_image_file
+    - field.field.paragraph.our_teams.field_link
+    - field.field.paragraph.our_teams.field_name
+    - field.field.paragraph.our_teams.field_title
+    - paragraphs.paragraphs_type.our_teams
+  module:
+    - file
+    - link
+    - text
+id: paragraph.our_teams.default
+targetEntityType: paragraph
+bundle: our_teams
+mode: default
+content:
+  field_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_email:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_image:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_image_file:
+    weight: 6
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  field_link:
+    weight: 5
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_name:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true

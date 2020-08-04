@@ -1,0 +1,14 @@
+--- a/web/modules/contrib/bootstrap_library/bootstrap_library.module
++++ b/web/modules/contrib/bootstrap_library/bootstrap_library.module
+@@ -17,9 +17,9 @@
+  */
+ function bootstrap_library_page_attachments(array &$page) {
+   // Don't add the JavaScript and CSS during installation.
+- if (drupal_installation_attempted()) {
++ /* if (drupal_installation_attempted()) {
+     return;
+-  }
++  } */
+   // Don't add the JavaScript and CSS on specified paths or themes.
+   if (!_bootstrap_library_check_theme() || !_bootstrap_library_check_url()) {
+     return;

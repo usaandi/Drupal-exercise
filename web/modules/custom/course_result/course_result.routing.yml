@@ -1,0 +1,14 @@
+course_result.admin:
+  path: '/admin/course/scores'
+  defaults:
+    _controller: '\Drupal\course_result\Controller\CourseResultController::content'
+    _title: 'Course Result'
+  requirements:
+    _permission: 'access content'
+
+course_result.autocomplete.users:
+  path: '/admin/course_result/autocomplete/users'
+  defaults:
+    _controller: '\Drupal\course_result\Controller\CourseResultController::handleAutoComplete'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,14 @@
+uuid: 29e3e1d8-c840-4de2-8b8e-27e1d56211f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.webform_submissioner
+  module:
+    - user
+id: user_remove_role_action.webform_submissioner
+label: 'Remove the Webform submissioner role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: webform_submissioner

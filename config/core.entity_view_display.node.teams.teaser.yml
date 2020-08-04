@@ -1,0 +1,31 @@
+uuid: afee591a-d0b4-41b8-9197-355ac5c7a6dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.teams.field_our_team
+    - node.type.teams
+  module:
+    - entity_reference_revisions
+    - user
+id: node.teams.teaser
+targetEntityType: node
+bundle: teams
+mode: teaser
+content:
+  field_our_team:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    region: content
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

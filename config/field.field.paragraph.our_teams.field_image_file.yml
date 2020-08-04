@@ -1,0 +1,27 @@
+uuid: 90967bc9-312b-408d-9245-0d457032e2c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_file
+    - paragraphs.paragraphs_type.our_teams
+  module:
+    - file
+id: paragraph.our_teams.field_image_file
+field_name: field_image_file
+entity_type: paragraph
+bundle: our_teams
+label: image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

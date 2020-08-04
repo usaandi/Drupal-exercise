@@ -1,0 +1,23 @@
+uuid: c84fadbd-4674-4ad2-aa5d-7de848627094
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - usai
+_core:
+  default_config_hash: Q-4EcGAsu26ICu4ejEz0uE1zv4akpiaOsizxgZfAmEw
+id: usai_search
+theme: usai
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: '0'
+  page_id: node_search
+visibility: {  }

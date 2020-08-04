@@ -1,0 +1,5 @@
+course_result.admin.structure:
+  title: 'Course settings'
+  description: 'Configure contact entity'
+  route_name:  course_result.admin
+  parent: system.admin_content

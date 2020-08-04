@@ -1,0 +1,82 @@
+uuid: e2a57158-5a76-4d0f-8500-c49046a5b7a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.our_teams.field_description
+    - field.field.paragraph.our_teams.field_email
+    - field.field.paragraph.our_teams.field_image
+    - field.field.paragraph.our_teams.field_image_file
+    - field.field.paragraph.our_teams.field_link
+    - field.field.paragraph.our_teams.field_name
+    - field.field.paragraph.our_teams.field_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.our_teams
+  module:
+    - file
+    - link
+    - media
+    - text
+id: paragraph.our_teams.default
+targetEntityType: paragraph
+bundle: our_teams
+mode: default
+content:
+  field_description:
+    weight: 2
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_email:
+    weight: 4
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: email_mailto
+    region: content
+  field_image:
+    type: media_thumbnail
+    weight: 0
+    label: visually_hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+  field_image_file:
+    type: file_default
+    weight: 6
+    region: content
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+  field_link:
+    weight: 5
+    label: visually_hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_name:
+    weight: 3
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_title:
+    weight: 1
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

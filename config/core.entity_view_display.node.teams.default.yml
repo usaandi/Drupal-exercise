@@ -1,0 +1,30 @@
+uuid: 0cc60321-b79d-4609-a183-02726c51c545
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.teams.field_our_team
+    - node.type.teams
+  module:
+    - entity_reference_revisions
+    - user
+id: node.teams.default
+targetEntityType: node
+bundle: teams
+mode: default
+content:
+  field_our_team:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

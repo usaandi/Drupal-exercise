@@ -1,0 +1,17 @@
+{
+  "name": "usai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "sass": "^1.26.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "styles-dev-watch": "sass --watch sass/",
+    "styles": "sass sass/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Usai",
+  "license": "ISC"
+}

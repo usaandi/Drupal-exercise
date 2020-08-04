@@ -1,0 +1,22 @@
+uuid: 7b81ba0a-20dc-4331-b945-3d38909cd03c
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - usai
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: usai_help
+theme: usai
+region: content
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

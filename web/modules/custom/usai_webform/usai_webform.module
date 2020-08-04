@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+module_load_include('inc', 'webform', 'includes/webform.theme.template');
+/**
+ * Implements hook_theme().
+ */
+function usai_webform_theme($existing, $type, $theme, $path) {
+  return [
+    'usai_webform__textfield' => [
+      'render element' => 'element',
+    ]
+  ];
+}
+
+/**
+ *  Implements hook_form_alter().
+ */
+function usai_webform_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form["elements"]["nimi"]['#attributes']['class'] = ['pink'];
+
+
+
+}
+
+/**
+ *  Implements hook_element_info_alter().
+ */
+function usai_webform_webform_element_info_alter(array &$elements) {
+
+  if (isset($elements['textarea'])) {
+   $elements['textarea']['class'] = "Drupal\usai_webform\Plugin\WebformElement\CustomWebformTextareaField";
+  }
+
+
+}

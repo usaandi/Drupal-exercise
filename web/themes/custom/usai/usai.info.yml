@@ -1,0 +1,8 @@
+name: Usai theme
+type: theme
+description: 'My own theme called Usai'
+core: 8.x
+core_version_requirement: ^8 || ^9
+base theme: bartik
+libraries:
+  - usai/global-css

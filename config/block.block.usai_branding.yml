@@ -1,0 +1,25 @@
+uuid: e7205683-8074-4b1d-b2b4-12a026a9002f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - usai
+_core:
+  default_config_hash: NDwadleLD3YVSbDUaakxyYZyINYtkFtOVGShfq4kWy8
+id: usai_branding
+theme: usai
+region: secondary_menu
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: Usai
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: b7da62b4-2789-4ff2-a373-55d2c5edc4f3
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - usai
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: usai_messages
+theme: usai
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

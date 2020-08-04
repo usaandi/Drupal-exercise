@@ -1,0 +1,50 @@
+uuid: 6dddef1a-21e1-4d8f-bdc9-317c06f74467
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.body
+    - field.field.node.page.field_our_teams
+    - field.field.node.page.field_widget_text
+    - node.type.page
+  module:
+    - entity_reference_revisions
+    - text
+    - usai_webform
+    - user
+_core:
+  default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_our_teams:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_widget_text:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: Random_default
+    region: content
+  links:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

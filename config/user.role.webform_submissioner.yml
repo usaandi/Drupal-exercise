@@ -1,0 +1,9 @@
+uuid: ea7b1bcf-14f6-4cb4-88f2-2a71adcbb9aa
+langcode: en
+status: true
+dependencies: {  }
+id: webform_submissioner
+label: 'Webform submissioner'
+weight: 3
+is_admin: null
+permissions: {  }

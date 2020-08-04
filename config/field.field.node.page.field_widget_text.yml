@@ -1,0 +1,19 @@
+uuid: 1a7b6673-2f27-4ecd-adc0-554900b0b7fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_widget_text
+    - node.type.page
+id: node.page.field_widget_text
+field_name: field_widget_text
+entity_type: node
+bundle: page
+label: widget_text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,31 @@
+uuid: 53c8e4e6-9c4f-4b4c-9915-6dbb3dcf9bc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_our_teams
+    - node.type.page
+    - paragraphs.paragraphs_type.our_teams
+  module:
+    - entity_reference_revisions
+id: node.page.field_our_teams
+field_name: field_our_teams
+entity_type: node
+bundle: page
+label: 'Our teams'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      our_teams: our_teams
+    target_bundles_drag_drop:
+      our_teams:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

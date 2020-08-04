@@ -1,0 +1,16 @@
+favicon:
+  mimetype: image/png
+  path: 'public://ADM logo_0.png'
+  url: ''
+  use_default: false
+features:
+  comment_user_picture: true
+  comment_user_verification: false
+  favicon: true
+  node_user_picture: true
+logo:
+  path: 'public://ADM logo.png'
+  url: ''
+  use_default: false
+_core:
+  default_config_hash: 9rAU4Pku7eMBQxauQqAgjzlcicFZ2As6zEa6zvTlCB8

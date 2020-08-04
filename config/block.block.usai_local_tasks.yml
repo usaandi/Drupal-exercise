@@ -1,0 +1,22 @@
+uuid: 8b148942-be90-4eb2-bdb9-3fa65677dca8
+langcode: en
+status: true
+dependencies:
+  theme:
+    - usai
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: usai_local_tasks
+theme: usai
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: false
+  secondary: false
+visibility: {  }
