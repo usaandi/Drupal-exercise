@@ -24,9 +24,15 @@ class CourseResultForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['user'] = [
-      '#type' => 'textfield',
+      '#type' => 'entity_autocomplete',
+      '#target_type' => 'user',
       '#title' => $this->t('User'),
-      '#autocomplete_route_name' => 'course_result.autocomplete.users',
+    ];
+
+
+    $form['unique_number'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Unique number'),
     ];
 
     $form['score_a'] = [

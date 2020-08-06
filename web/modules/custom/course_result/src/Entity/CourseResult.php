@@ -88,6 +88,13 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
       ->setDescription(t('The ID of the Course result entity.'))
       ->setReadOnly(TRUE);
 
+
+    $fields['unique_number'] = BaseFieldDefinition::create('integer')
+      ->setLabel(t('Unique Number'))
+      // Use the ID of the constraint as it was defined
+      // in the annotation of the constraint definition
+      ->addConstraint('UniqueInteger');
+
     // Standard field, unique outside of the scope of the current project.
     $fields['uuid'] = BaseFieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
@@ -120,6 +127,7 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
+      /*->addPropertyConstraints('UserPermission',['HasPermission'])*/
 
     $fields['score_a'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Score a'))
