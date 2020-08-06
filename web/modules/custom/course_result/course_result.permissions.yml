@@ -1,0 +1,4 @@
+participate in course:
+  title: 'participate in course'
+  description: 'A custom permission for course participant'
+  restrict access: TRUE
