@@ -1,1 +1,15 @@
 <?php
+
+function course_result_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
+  $a = 1;
+  if ($entity_type->id() == 'course_result' && !empty($fields['score_a'])) {
+    $fields['score_a']->addConstraint('HasPermission', []);
+  }
+}
+function course_result_entity_type_alter(array &$entity_types) {
+
+  $a = 1;
+  if (isset($entity_types['user'])) {
+    $entity_types['user']->addConstraint('HasPermission');
+  }
+}
