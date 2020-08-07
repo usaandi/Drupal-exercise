@@ -25,6 +25,10 @@ use Drupal\user\UserInterface;
  *    "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *    "views_data" = "Drupal\course_result\CourseResultViewsData",
  *   },
+ *
+ *   form = {
+ *       "default" = "Drupal\course_result\Form\CourseResultForm",
+ *   },
  *   base_table = "course_result",
  *   entity_keys = {
  *     "id" = "id",
@@ -35,6 +39,7 @@ use Drupal\user\UserInterface;
 class CourseResult extends ContentEntityBase implements CourseResultInterface {
 
   use EntityChangedTrait;
+
   const CREATOR_UID = 'creator_uid';
 
   /**
@@ -45,6 +50,7 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
     $values += [
       self::CREATOR_UID => \Drupal::currentUser()->id(),
     ];
+
   }
 
   /**
@@ -88,13 +94,6 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
       ->setDescription(t('The ID of the Course result entity.'))
       ->setReadOnly(TRUE);
 
-
-    $fields['unique_number'] = BaseFieldDefinition::create('integer')
-      ->setLabel(t('Unique Number'))
-      // Use the ID of the constraint as it was defined
-      // in the annotation of the constraint definition
-      ->addConstraint('UniqueInteger');
-
     // Standard field, unique outside of the scope of the current project.
     $fields['uuid'] = BaseFieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
@@ -126,16 +125,16 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
         'weight' => -3,
       ])
       ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-      /*->addPropertyConstraints('UserPermission',['HasPermission'])*/
+      ->setDisplayConfigurable('view', TRUE)
+      ->addConstraint('HasPermission');
 
     $fields['score_a'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Score a'))
-      ->setDescription(t('Current score'));
+      ->setDescription(t('Current score'))->addConstraint('HasPermission')->setPropertyConstraints('value', ['Length' => ['max' => 1]]);;
 
     $fields['score_b'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Score b'))
-      ->setDescription(t('Current score'));
+      ->setDescription(t('Current score'))->addConstraint('HasPermission')->setPropertyConstraints('value', ['Length' => ['max' => 1]]);;
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))

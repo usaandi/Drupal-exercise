@@ -2,9 +2,7 @@
 
 namespace Drupal\course_result\Form;
 
-use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
-use Drupal\Component\Plugin\Exception\PluginNotFoundException;
-use Drupal\Core\Entity\EntityStorageException;
+use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -13,26 +11,30 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @ingroup content_entity
  */
-class CourseResultForm extends FormBase {
+class CourseResultForm extends ContentEntityForm {
+
 
   public function getFormId() {
-    return 'course_result_form';
+    return 'course_result_add_form';
+  }
+
+
+  public function getBaseFormId() {
+    return 'course_result';
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+
+    $form = parent::buildForm($form, $form_state);
+   $entity = $this->entity;
+
     $form['user'] = [
       '#type' => 'entity_autocomplete',
       '#target_type' => 'user',
       '#title' => $this->t('User'),
-    ];
-
-
-    $form['unique_number'] = [
-      '#type' => 'number',
-      '#title' => $this->t('Unique number'),
     ];
 
     $form['score_a'] = [
@@ -54,6 +56,7 @@ class CourseResultForm extends FormBase {
     return $form;
   }
 
+
   /**
    * {@inheritdoc}
    */
@@ -61,9 +64,6 @@ class CourseResultForm extends FormBase {
 
     $values = $form_state->getValues();
 
-    $messenger = \Drupal::messenger();
-    $messenger->addMessage('Score a: '.$values['score_a']);
-    $messenger->addMessage('Score b: '.$values['score_b']);
 
     preg_match("/(\d+)/", $values['user'], $match);
     $id = $match[1];
@@ -76,9 +76,8 @@ class CourseResultForm extends FormBase {
 
     try {
       \Drupal::entityTypeManager()->getStorage('course_result')->create($fields)->save();
-    } catch (InvalidPluginDefinitionException $e) {
-    } catch (PluginNotFoundException $e) {
-    } catch (EntityStorageException $e) {
+    } catch (\Exception $e) {
+      dd($e);
     }
   }
 
