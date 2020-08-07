@@ -2,8 +2,7 @@
 
 namespace Drupal\course_result\Form;
 
-use Drupal\Core\Entity\ContentEntityForm;
-use Drupal\Core\Form\FormBase;
+use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -11,25 +10,29 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @ingroup content_entity
  */
-class CourseResultForm extends ContentEntityForm {
+class CourseResultForm extends EntityForm {
 
-
+  /**
+   * @return string
+   */
   public function getFormId() {
     return 'course_result_add_form';
   }
 
-
+  /**
+   * @return string
+   */
   public function getBaseFormId() {
     return 'course_result';
   }
 
   /**
-   * {@inheritdoc}
+   * @param array $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *
+   * @return array
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-
-    //$form = parent::buildForm($form, $form_state);
-   $entity = $this->entity;
 
     $form['user'] = [
       '#type' => 'entity_autocomplete',
