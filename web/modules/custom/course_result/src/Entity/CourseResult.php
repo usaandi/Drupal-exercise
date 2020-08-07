@@ -24,11 +24,11 @@ use Drupal\user\UserInterface;
  *    "list_builder" = "Drupal\course_result\Entity\Controller\CourseResultListBuilder",
  *    "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *    "views_data" = "Drupal\course_result\CourseResultViewsData",
+ *    "form" = {
+ *       "default" = "Drupal\course_result\Form\CourseResultForm",
+ *    },
  *   },
  *
- *   form = {
- *       "default" = "Drupal\course_result\Form\CourseResultForm",
- *   },
  *   base_table = "course_result",
  *   entity_keys = {
  *     "id" = "id",

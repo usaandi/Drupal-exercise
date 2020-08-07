@@ -5,19 +5,41 @@ namespace Drupal\course_result\Controller;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\Element\EntityAutocomplete;
+use Drupal\Core\Entity\EntityFormBuilder;
+use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\entity_browser\Plugin\EntityBrowser\WidgetValidation\EntityType;
 use Drupal\user\Entity\User;
 use Drupal\views\Views;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class CourseResultController extends ControllerBase {
+
+
+  protected $entityFormBuilder;
+  protected $entityTypeManager;
+
+  public function __construct(EntityFormBuilder $entityFormBuilder, EntityTypeManager $entityTypeManager) {
+    $this->entityFormBuilder = $entityFormBuilder;
+    $this->entityTypeManager = $entityTypeManager;
+
+  }
+
+  public static function create(ContainerInterface $container) {
+   return new static (
+     $container->get('entity.form_builder'),
+     $container->get('entity_type.manager')
+   );
+  }
 
   /**
    * @return array
    */
   public function content() : array {
-    $form = \Drupal::formBuilder()->getForm('Drupal\course_result\Form\CourseResultForm');
-
+    $entity = $this->entityTypeManager->getStorage('course_result')->create();
+    $form = $this->entityFormBuilder->getForm($entity, "default");
     $build = [
       'form' => $form,
       'view' => Views::getView('course_result')->render('result'),
