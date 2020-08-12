@@ -106,14 +106,9 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
       ->setSetting('target_type', 'user');
 
     $fields['course_participant_uid'] = BaseFieldDefinition::create('entity_reference')
-      ->setLabel(t('course participant user Id'))
+      ->setLabel(t('User'))
       ->setDescription(t('The course participant user ID reference'))
       ->setSetting('target_type', 'user')
-      ->setDisplayOptions('view', [
-        'label' => 'above',
-        'type' => 'author',
-        'weight' => -3,
-      ])
       ->setDisplayOptions('form', [
         'type' => 'entity_reference_autocomplete',
         'settings' => [
@@ -125,16 +120,15 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
         'weight' => -3,
       ])
       ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE)
       ->addConstraint('HasPermission');
 
     $fields['score_a'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Score a'))
-      ->setDescription(t('Current score'))->addConstraint('HasPermission')->setPropertyConstraints('value', ['Length' => ['max' => 1]]);;
+      ->setDescription(t('Current score'))->addConstraint('HasPermission');
 
     $fields['score_b'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Score b'))
-      ->setDescription(t('Current score'))->addConstraint('HasPermission')->setPropertyConstraints('value', ['Length' => ['max' => 1]]);;
+      ->setDescription(t('Current score'));
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
@@ -142,6 +136,7 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
 
     return $fields;
   }
+
 
 
 }

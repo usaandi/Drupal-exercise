@@ -3,7 +3,8 @@
 namespace Drupal\course_result\Form;
 
 use Drupal\Core\Entity\ContentEntityForm;
-use Drupal\Core\Form\FormBase;
+use Drupal\Core\Entity\EntityConstraintViolationListInterface;
+use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -13,36 +14,45 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class CourseResultForm extends ContentEntityForm {
 
-
+  /**
+   * @return string
+   */
   public function getFormId() {
-    return 'course_result_add_form';
+    return 'course_result';
   }
 
-
+  /**
+   * @return string
+   */
   public function getBaseFormId() {
     return 'course_result';
   }
 
   /**
-   * {@inheritdoc}
+   * @param array $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *
+   * @return array
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
 
-    //$form = parent::buildForm($form, $form_state);
-   $entity = $this->entity;
+ /*   if (!$form_state->has('entity_form_initialized')) {
+      $this->init($form_state);
+    }*/
+    $form = parent::buildForm($form, $form_state);
 
-    $form['user'] = [
+  /*  $form['course_participant_uid'] = [
       '#type' => 'entity_autocomplete',
       '#target_type' => 'user',
       '#title' => $this->t('User'),
-    ];
+    ];*/
 
     $form['score_a'] = [
       '#type' => 'number',
       '#title' => $this->t('Score A'),
     ];
 
-       $form['score_b'] = [
+    $form['score_b'] = [
       '#type' => 'number',
       '#title' => $this->t('Score B'),
     ];
@@ -56,20 +66,14 @@ class CourseResultForm extends ContentEntityForm {
     return $form;
   }
 
-
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
-    $values = $form_state->getValues();
-
-
-    preg_match("/(\d+)/", $values['user'], $match);
-    $id = $match[1];
+  $values = $form_state->getValues();
 
    $fields = [
-     'course_participant_uid' => (int)$id,
+     'course_participant_uid' => (int)$values['course_participant_uid'][0]['target_id'],
      'score_a' => (int)$values['score_a'],
      'score_b' => (int)$values['score_b'],
    ];

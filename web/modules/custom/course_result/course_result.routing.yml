@@ -20,3 +20,11 @@ course_result.autocomplete.users:
     _controller: '\Drupal\course_result\Controller\CourseResultController::handleAutoComplete'
   requirements:
     _permission: 'access content'
+
+course_result.export:
+  path: '/admin/course_result/export'
+  defaults:
+    _controller: '\Drupal\course_result\Controller\ExportCSVController::exportCSV'
+    _title: 'Course Result export'
+  requirements:
+    _permission: 'access content'
