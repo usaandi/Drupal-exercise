@@ -1,7 +1,4 @@
 services:
-  course_result.form:
-    class: Drupal\course_result\Form\CourseResultForm
-    autowire: true
   course_result_export.commands:
     class: \Drupal\course_result\Commands\CourseResultExportCVS
     tags:
