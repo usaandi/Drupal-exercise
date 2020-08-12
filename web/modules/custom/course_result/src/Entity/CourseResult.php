@@ -120,7 +120,6 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
         'weight' => -3,
       ])
       ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE)
       ->addConstraint('HasPermission');
 
     $fields['score_a'] = BaseFieldDefinition::create('integer')
