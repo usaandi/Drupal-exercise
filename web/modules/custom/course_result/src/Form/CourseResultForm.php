@@ -2,6 +2,8 @@
 
 namespace Drupal\course_result\Form;
 
+use Drupal\Core\Entity\ContentEntityForm;
+use Drupal\Core\Entity\EntityConstraintViolationListInterface;
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -10,7 +12,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @ingroup content_entity
  */
-class CourseResultForm extends EntityForm {
+class CourseResultForm extends ContentEntityForm {
 
   /**
    * @return string
@@ -34,7 +36,12 @@ class CourseResultForm extends EntityForm {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
 
-    $form['user'] = [
+    if (!$form_state->has('entity_form_initialized')) {
+      $this->init($form_state);
+    }
+    $form = parent::buildForm($form, $form_state);
+
+    $form['course_participant_uid'] = [
       '#type' => 'entity_autocomplete',
       '#target_type' => 'user',
       '#title' => $this->t('User'),
@@ -45,7 +52,7 @@ class CourseResultForm extends EntityForm {
       '#title' => $this->t('Score A'),
     ];
 
-       $form['score_b'] = [
+    $form['score_b'] = [
       '#type' => 'number',
       '#title' => $this->t('Score B'),
     ];
@@ -59,16 +66,13 @@ class CourseResultForm extends EntityForm {
     return $form;
   }
 
-
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+  $values = $form_state->getValues();
 
-    $values = $form_state->getValues();
-
-
-    preg_match("/(\d+)/", $values['user'], $match);
+    preg_match("/(\d+)/", $values['course_participant_uid'], $match);
     $id = $match[1];
 
    $fields = [
