@@ -106,9 +106,21 @@ class CourseResult extends ContentEntityBase implements CourseResultInterface {
       ->setSetting('target_type', 'user');
 
     $fields['course_participant_uid'] = BaseFieldDefinition::create('entity_reference')
-      ->setLabel(t('course participant user Id'))
+      ->setLabel(t('User'))
       ->setDescription(t('The course participant user ID reference'))
       ->setSetting('target_type', 'user')
+      ->setDisplayOptions('form', [
+        'type' => 'entity_reference_autocomplete',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'match_limit' => 10,
+          'size' => 60,
+          'placeholder' => '',
+        ],
+        'weight' => -3,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
       ->addConstraint('HasPermission');
 
     $fields['score_a'] = BaseFieldDefinition::create('integer')
