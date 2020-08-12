@@ -18,7 +18,7 @@ class CourseResultForm extends ContentEntityForm {
    * @return string
    */
   public function getFormId() {
-    return 'course_result_add_form';
+    return 'course_result';
   }
 
   /**
@@ -36,16 +36,16 @@ class CourseResultForm extends ContentEntityForm {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
 
-    if (!$form_state->has('entity_form_initialized')) {
+ /*   if (!$form_state->has('entity_form_initialized')) {
       $this->init($form_state);
-    }
+    }*/
     $form = parent::buildForm($form, $form_state);
 
-    $form['course_participant_uid'] = [
+  /*  $form['course_participant_uid'] = [
       '#type' => 'entity_autocomplete',
       '#target_type' => 'user',
       '#title' => $this->t('User'),
-    ];
+    ];*/
 
     $form['score_a'] = [
       '#type' => 'number',
@@ -72,11 +72,8 @@ class CourseResultForm extends ContentEntityForm {
   public function submitForm(array &$form, FormStateInterface $form_state) {
   $values = $form_state->getValues();
 
-    preg_match("/(\d+)/", $values['course_participant_uid'], $match);
-    $id = $match[1];
-
    $fields = [
-     'course_participant_uid' => (int)$id,
+     'course_participant_uid' => (int)$values['course_participant_uid'][0]['target_id'],
      'score_a' => (int)$values['score_a'],
      'score_b' => (int)$values['score_b'],
    ];
